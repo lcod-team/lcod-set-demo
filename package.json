@@ -75,7 +75,7 @@
 	"types": "./dist/index.d.ts",
 	"type": "module",
 	"dependencies": {
-		"@lcod/backend": "^0.0.3",
+		"@lcod/backend": "^0.0.4",
 		"xml2js": "^0.6.0"
 	}
 }
