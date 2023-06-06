@@ -1,4 +1,4 @@
-import { parseStringPromise } from "xml2js";
+import { XMLParser } from "fast-xml-parser";
 
 export default async function ({ edition }) {
     if (edition) {
@@ -6,14 +6,14 @@ export default async function ({ edition }) {
     }
     let res = await fetch(`http://rss.cnn.com/rss/edition${edition}.rss`);
     res = await res.text();
-    res = await parseStringPromise(res);
-    res = res.rss?.channel?.[0]?.item.map(item => {
-        const image = item['media:content'] ? item : item['media:group']?.[0];
+    res = new XMLParser({ ignoreAttributes: false }).parse(res);
+    res = res.rss?.channel?.item.map(item => {
+        const image = item['media:content'] ? item : item['media:group'];
         return {
-            title: item.title?.[0] ?? '',
-            description: item.title?.[0] ?? '',
-            link: item.link?.[0] ?? '',
-            image: image['media:content']?.[0]?.['$']?.url ?? ''
+            title: item.title ?? '',
+            description: item.description ?? '',
+            link: item.link ?? '',
+            image: image['media:content']?.[0]?.['@_url'] ?? ''
         };
     });
     return res;
