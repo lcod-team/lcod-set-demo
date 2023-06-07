@@ -1,13 +1,23 @@
 <script>
 	import Card from '$lib/Card.lcod';
 	import Box from '$lib/Box.lcod';
-	import CnnNews from '$lib/CnnNews.lcod';
+	import WiredNews from '$lib/WiredNews.lcod';
+
+	let edition = '';
 </script>
 
 <div>
-	<Box --style="none">
-		<Box --align="center" --background="lightpink"><span>News</span></Box>
-		<CnnNews edition="">
+	<Box --style="none" --background="darkgrey">
+		<Box --align="center" --background="lightpink"
+			><span title="menu" on:click={() => (edition = '')} on:keydown>
+				{#if edition == ''}
+					News
+				{:else}
+					← {edition.replace(/.*?(\w+$)/, '$1')}
+				{/if}
+			</span></Box
+		>
+		<WiredNews limit={5} bind:edition>
 			<Card
 				slot="post"
 				let:title
@@ -19,7 +29,7 @@
 				let:image
 				{image}
 			/>
-		</CnnNews>
+		</WiredNews>
 	</Box>
 </div>
 
@@ -29,5 +39,6 @@
 	}
 	span {
 		font-weight: bolder;
+		cursor: pointer;
 	}
 </style>

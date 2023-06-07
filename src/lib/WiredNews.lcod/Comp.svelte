@@ -1,15 +1,35 @@
 <script>
 	import { call } from '@lcod/backend/client';
+	import categories from './categories.json';
 	import { onMount } from 'svelte';
 
 	export let edition = '';
+	export let limit;
+
 	let data = 'n/a';
 	onMount(async () => {
-		data = await call({ edition });
+		if (edition != '') {
+			data = await call({ edition, limit });
+		}
 	});
 </script>
 
-{#if Array.isArray(data)}
+{#if edition == ''}
+	{#each Object.keys(categories) as category}
+		<div
+			on:click={async (e) => {
+				e.preventDefault();
+				edition = categories[category];
+				data = await call({ edition, limit });
+			}}
+			on:keydown
+		>
+			<slot name="post" title={category} description="">
+				<h2>{category}</h2>
+			</slot>
+		</div>
+	{/each}
+{:else if Array.isArray(data)}
 	{#each data as item}
 		<slot
 			name="post"

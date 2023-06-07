@@ -30,18 +30,6 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"svelte": "./dist/index.js"
-		},
-		"./Box.lcod": {
-			"types": "./dist/Box.lcod/Comp.svelte.d.ts",
-			"svelte": "./dist/Box.lcod/Comp.svelte"
-		},
-		"./Card.lcod": {
-			"types": "./dist/Card.lcod/Comp.svelte.d.ts",
-			"svelte": "./dist/Card.lcod/Comp.svelte"
-		},
-		"./CnnNews.lcod": {
-			"types": "./dist/CnnNews.lcod/Comp.svelte.d.ts",
-			"svelte": "./dist/CnnNews.lcod/Comp.svelte"
 		}
 	},
 	"files": [

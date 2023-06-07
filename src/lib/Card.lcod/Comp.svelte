@@ -7,20 +7,22 @@
 	export let link = '#';
 </script>
 
-<Box --background="lightblue" --padding="0px" --margin="0px">
+<Box --background="lightblue" --padding="0px" --margin="20px 0px">
 	<a href={link} target="_blank">
 		<Box --background="lightgreen" --style="none" --padding="10px">
 			<span>{title}</span>
 		</Box>
 	</a>
-	<div>
-		{#if image != ''}
-			<img src={image} alt={title} />
-		{/if}
-		{#if description != ''}
-			<span>{description}</span>
-		{/if}
-	</div>
+	{#if image != '' || description != ''}
+		<div>
+			{#if image != ''}
+				<img src={image} alt={title} />
+			{/if}
+			{#if description != ''}
+				<span>{description}</span>
+			{/if}
+		</div>
+	{/if}
 </Box>
 
 <style>
@@ -29,6 +31,7 @@
 	}
 	div {
 		margin: 10px;
+		padding-bottom: 10px;
 	}
 	img {
 		border-radius: 20px;
