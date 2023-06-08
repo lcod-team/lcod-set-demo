@@ -5,13 +5,13 @@
 
 	export let edition = '';
 	export let limit;
-
+	let live = false;
 	let data = 'n/a';
-	onMount(async () => {
-		if (edition != '') {
-			data = await call({ edition, limit });
-		}
-	});
+
+	$: if (live && edition != '') {
+		call({ edition, limit }).then((d) => (data = d));
+	}
+	onMount(() => (live = true));
 </script>
 
 {#if edition == ''}
@@ -20,7 +20,6 @@
 			on:click={async (e) => {
 				e.preventDefault();
 				edition = categories[category];
-				data = await call({ edition, limit });
 			}}
 			on:keydown
 		>

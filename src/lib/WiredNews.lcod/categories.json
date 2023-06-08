@@ -1,9 +1,9 @@
 {
-    "Business": "category/business",
-    "Artificial Intelligence": "tag/ai",
-    "Culture": "category/culture",
-    "Gear": "category/gear",
-    "Ideas": "category/ideas",
-    "Science": "category/science",
-    "Security": "category/security"
+	"Business": "category/business",
+	"Artificial Intelligence": "tag/ai",
+	"Culture": "category/culture",
+	"Gear": "category/gear",
+	"Ideas": "category/ideas",
+	"Science": "category/science",
+	"Security": "category/security"
 }
