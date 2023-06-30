@@ -2,10 +2,13 @@
 	import Card from '$lib/Card.lcod';
 	import Box from '$lib/Box.lcod';
 	import WiredNews from '$lib/WiredNews.lcod';
+	import InputSpeech from '$lib/InputSpeech.lcod';
 
 	let edition = '';
 </script>
 
+<h1>Something to say?</h1>
+<InputSpeech />
 <div>
 	<Box --style="none" --background="darkgrey">
 		<Box --align="center" --background="lightpink"
